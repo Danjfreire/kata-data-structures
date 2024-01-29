@@ -38,13 +38,14 @@ export default class SinglyLinkedList<T> {
             return this.append(item);
         }
 
-        let currentIdx = 0;
-        let pointer = this.head as Node<T>;
+        this.length++;
+        let pointer = this.head;
 
-        while (pointer.next != null && currentIdx <= idx - 1) {
-            pointer = pointer.next;
-            currentIdx++;
+        for (let i = 0; i < idx - 1; i++) {
+            pointer = pointer?.next;
         }
+
+        pointer = pointer as Node<T>;
         const node = { value: item } as Node<T>;
 
         node.next = pointer.next;
